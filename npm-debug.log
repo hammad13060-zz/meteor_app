@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'mongo-hacker' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'mongo-hacker', null ]
+5 verbose cache add name=undefined spec="mongo-hacker" args=["mongo-hacker",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'mongo-hacker',
+6 verbose parsed url   path: 'mongo-hacker',
+6 verbose parsed url   href: 'mongo-hacker' }
+7 silly lockFile 1933551c-mongo-hacker mongo-hacker
+8 verbose lock mongo-hacker /home/hammad/.npm/1933551c-mongo-hacker.lock
+9 silly lockFile 1933551c-mongo-hacker mongo-hacker
+10 silly lockFile 1933551c-mongo-hacker mongo-hacker
+11 verbose addNamed [ 'mongo-hacker', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile bf903ed2-mongo-hacker mongo-hacker@
+14 verbose lock mongo-hacker@ /home/hammad/.npm/bf903ed2-mongo-hacker.lock
+15 silly addNameRange { name: 'mongo-hacker', range: '*', hasData: false }
+16 verbose url raw mongo-hacker
+17 verbose url resolving [ 'https://registry.npmjs.org/', './mongo-hacker' ]
+18 verbose url resolved https://registry.npmjs.org/mongo-hacker
+19 info trying registry request attempt 1 at 15:17:20
+20 verbose etag "5GCI14ZGN6VMCLYPDQTYM1IM4"
+21 http GET https://registry.npmjs.org/mongo-hacker
+22 http 304 https://registry.npmjs.org/mongo-hacker
+23 silly registry.get cb [ 304,
+23 silly registry.get   { date: 'Sat, 27 Jun 2015 09:47:21 GMT',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     'cache-control': 'max-age=60',
+23 silly registry.get     etag: '"5GCI14ZGN6VMCLYPDQTYM1IM4"',
+23 silly registry.get     age: '45',
+23 silly registry.get     connection: 'keep-alive',
+23 silly registry.get     'x-served-by': 'cache-sin6921-SIN',
+23 silly registry.get     'x-cache': 'HIT',
+23 silly registry.get     'x-cache-hits': '1',
+23 silly registry.get     'x-timer': 'S1435398441.026894,VS0,VE0',
+23 silly registry.get     vary: 'Accept' } ]
+24 verbose etag mongo-hacker from cache
+25 silly addNameRange number 2 { name: 'mongo-hacker', range: '*', hasData: true }
+26 silly addNameRange versions [ 'mongo-hacker', [ '0.0.3', '0.0.4', '0.0.5', '0.0.8' ] ]
+27 verbose addNamed [ 'mongo-hacker', '0.0.8' ]
+28 verbose addNamed [ '0.0.8', '0.0.8' ]
+29 silly lockFile 85c8d1da-mongo-hacker-0-0-8 mongo-hacker@0.0.8
+30 verbose lock mongo-hacker@0.0.8 /home/hammad/.npm/85c8d1da-mongo-hacker-0-0-8.lock
+31 silly lockFile 85c8d1da-mongo-hacker-0-0-8 mongo-hacker@0.0.8
+32 silly lockFile 85c8d1da-mongo-hacker-0-0-8 mongo-hacker@0.0.8
+33 silly lockFile bf903ed2-mongo-hacker mongo-hacker@
+34 silly lockFile bf903ed2-mongo-hacker mongo-hacker@
+35 silly resolved [ { name: 'mongo-hacker',
+35 silly resolved     version: '0.0.8',
+35 silly resolved     description: 'MongoDB Shell Enhancements for Hackers',
+35 silly resolved     scripts:
+35 silly resolved      { test: 'echo "Error: no test specified" && exit 1',
+35 silly resolved        install: 'make install',
+35 silly resolved        update: 'make install',
+35 silly resolved        postuninstall: 'make uninstall' },
+35 silly resolved     preferGlobal: true,
+35 silly resolved     repository:
+35 silly resolved      { type: 'git',
+35 silly resolved        url: 'git@github.com:TylerBrock/mongo-hacker.git' },
+35 silly resolved     keywords: [ 'mongodb', 'shell', 'hacks', 'tweaks' ],
+35 silly resolved     author: { name: 'Tyler Brock', email: 'tyler.brock@gmail.com' },
+35 silly resolved     homepage: 'http://tylerbrock.github.io/mongo-hacker/',
+35 silly resolved     license: 'MIT',
+35 silly resolved     bugs: { url: 'https://github.com/TylerBrock/mongo-hacker/issues' },
+35 silly resolved     readme: '# MongoDB Shell Enhancements\n\n## Warnings\n\n* These enhancements are useful to me but they don\'t make sense for everyone. Feel free to tweak to your desire and please submit [feedback or pull requests](https://github.com/TylerBrock/mongo-hacker/issues).\n* Does not work with `mongo` shell or MongoDB servers < 2.4\n* Updates called on existing cursors are new and experimental (see notes in API section)\n\n## Installation\n\n### Install as a global module from `npm`:\n\n```sh\nnpm install -g mongo-hacker\n```\n\n### Clone the repository and install with `make`\n\nClone this repository and run `make install`. This will rename your existing `.mongorc.js` file to `.mongorc.js.orig` and link `mongo_hacker.js` to `.mongorc.js` in your home directory:\n\n```sh\ngit clone https://github.com/TylerBrock/mongo-hacker.git\nrm -rf ~/.mongorc.js # may be needed as we don\'t force the link anymore\ncd mongo-hacker\nmake install\n```\n\n## Enhancements\n\n### Basic UX\n\n  - Sort document keys by default\n  - Highlight querytime if verboseShell is enabled\n    - In **green** if querytime is at or below slowms\n    - In **red** if query time is above slowms\n  - IndexParanoia\n    - Automatically show information about index use after each query (takes extra time) -- to enable: `setIndexParanoia(true)`\n  - Default indent is 2 spaces instead of tab\n    - Customizable by setting `indent` key of config\n  - Verbose shell is enabled by default -- to disable: `setVerboseShell(false)`\n  - Disable notfication of "Type \'it\' for more"\n  - Custom prompt: `hostname(process-version)[rs_status:set_name] db>`\n  - Always pretty print. You can still use default format by appending `.ugly()` to the end of db statement.\n  - Show DBs has aligned columns and shows less significant digits (in master for Mongo 2.5/2.6)\n  - Nicer `sh.status()` output (remove lastmod, take up less space, colorize chunk\'s shard)\n\n#### Colorization\n\nColorized query output for console/terminal windows supporting ANSI color codes.\n\n![Colorized Output](http://tylerbrock.github.com/mongo-hacker/screenshots/colorized_shell.png)\n\n### Additional shell commands\n\nThe MongoDB shell offers various "shell commands" _(sometimes referred to as "shell helpers" as well)_ that make interactive use of the shell much more convenient than [proper, Javascript-only scripted use of the shell][interactive_versus_scripted].\n\nTo make interactive use of the MongoDB shell even more convenient, `mongo-hacker` adds the following shell commands:\n\n* `count documents`/`count docs`: count the number of documents in all _(non-`system`)_ collections in the database - by [@pvdb][pvdb]\n\n[interactive_versus_scripted]: http://docs.mongodb.org/manual/tutorial/write-scripts-for-the-mongo-shell/#differences-between-interactive-and-scripted-mongo\n\n[pvdb]: https://github.com/pvdb\n\n### API Additions\n\n#### Scripting\n\nGet a list of database names: _(by [@pvdb][pvdb])_\n\n```js\ndb.getMongo().getDatabaseNames()\n```\n\n_(note that this method is similar - functionality-wise and usage-wise - to the existing `db.getCollectionNames()` API method and allows for advanced, cross-database scripting in the MongoDB shell)_\n\n#### General\n\nFilter for a collection of documents:\n\n```js\ndb.collection.filter(<criteria>)\n```\n\nOne for finding a single document:\n\n```js\ndb.collection.find({ ... }).one() == db.collection.findOne({ ... })\n```\n\nSelect for selecting fields to return (projection):\n\n```js\ndb.collection.find({ ... }).select({ name: 1 })\n```\n\nReverse for descending sort by insertion order (default) or arbitrary field:\n\n```js\ndb.collection.find({ ... }).reverse()\ndb.collection.find({ ... }).reverse(\'createDate\')\n```\n\nLast for finding last inserted document (default) or document last by given field:\n\n```js\ndb.collection.find({ ... }).last()\ndb.collection.find({ ... }).last(\'createDate\')\n```\n\nUpdate, Replace, Upsert and Remove can be called on a DBQuery Object:\n\n```js\ndb.collection.find({ ... }).update({ ... })  // multi update\ndb.collection.find({ ... }).replace({ ... }) // single replacement\ndb.collection.find({ ... }).upsert({ ... })  // single upsert\ndb.collection.find({ ... }).remove()         // multi remove\n```\n\nSort, limit, and skip through multi updates and removes:\n\n```js\ndb.collection.find({ ... }).limit(7).update({ ... })\ndb.collection.find({ ... }).sort({ ... }).skip(1).limit(3).update({ ... })\ndb.collection.find({ ... }).limit(3).remove()\n```\n\n**Note**: *The performance of multi updates involving a skip or limit may be worse than those without those specifications due to there being absolutely no native support for this feature in MongoDB itself. It should be understood by the user of this software that use of this feature (by calling update on a cursor rather than a collection) is advanced and experimental. The option to do this sort of operation is purely additive to the MongoDB experience with MongoHacker and usage of it is in no way required. Furthermore, its inclusion in this enhancement does not effect the operation of updates invoked through collections and, in practice, is insanely useful.*\n\n\n#### Aggregation Framework\n\nThe aggregation framework is now fluent as well. You can use it as currently documented or via the chainable methods.\n\nCalling aggregate without an array of operations or $operations will make it a match.\n\n```js\n// matches every document\ndb.collection.aggregate()\ndb.collection.aggregate({})\n\n// matches documents where the "a" is equal to 1\ndb.collection.aggregate({a: 1})\n\n// matches documents where "a" is greater than 7\ndb.collection.aggregate({a: {$gt: 7}})\n```\n\nAdditional methods can then be chained on top of the inital match in order to make more complicated aggregations.\n\n```js\n// Match and project\ndb.collection.aggregate(<querydoc>).project(<projection>)\ndb.collection.aggregate({a: 1}).project({a: 1, _id: 0})\n\n// Match, group and sort\ndb.collection.aggregate({<match>}).group({<group>}).sort({<sort>})\ndb.test.aggregate().group({_id: \'$a\', \'sum\': {\'$sum\': 1}}).sort({sum: -1})\n```\n\n#### Helpers\n\nGeneral Shell Helpers\n\n  - `findCommand(\'search\')` list commands that match the search string\n\nAggregation Framework Helpers -- on collections\n\n  - Group and Count: `gcount(group_field, filter)`\n  - Group and Sum: `gsum(group_field, sum_field, filter)`\n  - Group and Average: `gavg(group_field, avg_field, filter)`\n\n',
+35 silly resolved     readmeFilename: 'README.md',
+35 silly resolved     _id: 'mongo-hacker@0.0.8',
+35 silly resolved     _from: 'mongo-hacker@' } ]
+36 info install mongo-hacker@0.0.8 into /usr/local/lib
+37 info installOne mongo-hacker@0.0.8
+38 info /usr/local/lib/node_modules/mongo-hacker unbuild
+39 verbose tar unpack /home/hammad/.npm/mongo-hacker/0.0.8/package.tgz
+40 silly lockFile 1e024ac4-al-lib-node-modules-mongo-hacker tar:///usr/local/lib/node_modules/mongo-hacker
+41 verbose lock tar:///usr/local/lib/node_modules/mongo-hacker /home/hammad/.npm/1e024ac4-al-lib-node-modules-mongo-hacker.lock
+42 silly lockFile 0330628b-m-mongo-hacker-0-0-8-package-tgz tar:///home/hammad/.npm/mongo-hacker/0.0.8/package.tgz
+43 verbose lock tar:///home/hammad/.npm/mongo-hacker/0.0.8/package.tgz /home/hammad/.npm/0330628b-m-mongo-hacker-0-0-8-package-tgz.lock
+44 silly gunzTarPerm modes [ '755', '644' ]
+45 error Error: EACCES, mkdir '/usr/local/lib/node_modules'
+45 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules']
+45 error   errno: 3,
+45 error   code: 'EACCES',
+45 error   path: '/usr/local/lib/node_modules',
+45 error   fstream_type: 'Directory',
+45 error   fstream_path: '/usr/local/lib/node_modules/mongo-hacker',
+45 error   fstream_class: 'DirWriter',
+45 error   fstream_stack:
+45 error    [ '/usr/lib/nodejs/fstream/lib/writer.js:171:23',
+45 error      '/usr/lib/nodejs/mkdirp/index.js:37:53',
+45 error      'Object.oncomplete (fs.js:107:15)' ] }
+46 error Please try running this command again as root/Administrator.
+47 error System Linux 3.13.0-34-generic
+48 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "mongo-hacker"
+49 error cwd /home/hammad/workspace/meteor/foosboom-meteor
+50 error node -v v0.10.25
+51 error npm -v 1.3.10
+52 error path /usr/local/lib/node_modules
+53 error fstream_path /usr/local/lib/node_modules/mongo-hacker
+54 error fstream_type Directory
+55 error fstream_class DirWriter
+56 error code EACCES
+57 error errno 3
+58 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules'
+59 error fstream_stack /usr/lib/nodejs/fstream/lib/writer.js:171:23
+59 error fstream_stack /usr/lib/nodejs/mkdirp/index.js:37:53
+59 error fstream_stack Object.oncomplete (fs.js:107:15)
+60 verbose exit [ 3, true ]
