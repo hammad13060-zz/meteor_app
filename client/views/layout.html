@@ -1,0 +1,13 @@
+<template name='layout'>
+<h1>Foosboom</h1>
+<style>
+    .active a {color: black;text-decoration: none;border: 1px solid black}
+</style>
+<ul>
+  <li><a href="/" class="{{isActiveRoute regex='games'}}">Games</a></li>
+  <li><a href="/teams" class="{{isActiveRoute regex='teams'}}">Teams</a></li>
+</ul>
+
+{{> loginButtons}}
+{{> yield}}
+</template>

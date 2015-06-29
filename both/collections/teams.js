@@ -20,3 +20,39 @@ Teams.allow({
 
   fetch: ['ownerId']
 });
+
+Meteor.methods({
+  teamUpdate: function(teamId,teamName){
+    var userId = Meteor.userId();
+
+    check(userId, String);
+    check(teamName, String);
+    check(teamId, String);
+
+    var team = Teams.findOne({_id: teamId, ownerId: userId});
+    if (team){
+      Teams.update(teamId, {$set: {name: teamName}}, function(error){
+        if (!error){
+          if(team.gameIds){
+            var games = Games.find({_id: {$in: team.gameIds}});
+
+            games.fetch().forEach(function(game){
+              game.teams.map(function(team){
+                if(team._id == teamId){
+                  team.name = newName;
+                }
+
+                Games.update({_id: game._id}, {$set: {teams: game.teams}});
+              })
+            });
+          }
+
+          return teamId;
+        }
+      });
+    }
+    else {
+      throw new Metero.Error("team doesn't exist", "This team doesn't exist int the database");
+    }
+  }
+});
